@@ -53,7 +53,7 @@ async def woocommerce(payload: WooCommercePayload):
 
         # Extraction
         activity.logger.info(f"Data extraction for {connected_id} with fill type {fill_type}")
-        
+    
         client = WooClient(request=WooOrderRequest(
             base_url=payload.base_url,
             consumer_key=payload.consumer_key,
@@ -64,7 +64,6 @@ async def woocommerce(payload: WooCommercePayload):
             LastUpdatedAfter=last_run_ts if fill_type == "incremental" else None,
             PerPage=100
         ))
-        
         orders = await client.get_orders()
         activity.logger.info(f"Orders extracted: {len(orders)}")
 

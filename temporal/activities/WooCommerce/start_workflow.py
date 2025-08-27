@@ -25,14 +25,7 @@ async def main():
 
     try:
         # Create the payload with correct structure
-        payload = WooCommercePayload(
-            connected_id="shivaloka-store-1",
-            base_url="https://shivaloka.co",
-            consumer_key="ck_7176a7d48632ba33f0b57d71424b2056fff4dec9",
-            consumer_secret="cs_ff1f04ea3c8c75fba01452c1196e9e1a44544859",
-            last_run_ts=datetime.now() - timedelta(days=30),  # Default to 30 days back
-            fill_type="backfill"
-        )
+        
 
         # Start the workflow
         handle = await client.start_workflow(
