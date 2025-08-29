@@ -4,7 +4,7 @@ import pandas as pd
 import psycopg2
 import os
 import logging
-# import sentry_sdk
+import sentry_sdk
 
 class SupabaseDatabase:
     def __init__(self) -> None:
@@ -56,7 +56,7 @@ class SupabaseDatabase:
         except psycopg2.Error as e:
             logging.error(f"Database error: {str(e)}")
             logging.error(f"Database error: {e.pgcode} - {e.pgerror}")
-            # sentry_sdk.capture_exception(e)
+            sentry_sdk.capture_exception(e)
         except Exception as e:
             logging.error(f"An unexpected error occurred: {e}")
         return False
